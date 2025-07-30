@@ -1,6 +1,0 @@
-document.addEventListener("astro:page-load",()=>{/*!
- * Minimal theme switcher
- *
- * Pico.css - https://picocss.com
- * Copyright 2019-2024 - Licensed under MIT
- */({_scheme:"auto",menuTarget:"details.dropdown",buttonsTarget:"a[data-theme-switcher]",buttonAttribute:"data-theme-switcher",rootAttribute:"data-theme",localStorageKey:"picoPreferredColorScheme",init(){this.scheme=this.schemeFromLocalStorage,this.initSwitchers()},get schemeFromLocalStorage(){return window.localStorage?.getItem(this.localStorageKey)??this._scheme},get preferredColorScheme(){return window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"},initSwitchers(){document.querySelectorAll(this.buttonsTarget).forEach(t=>{t.addEventListener("click",r=>{r.preventDefault(),this.scheme=t.getAttribute(this.buttonAttribute),document.querySelector(this.menuTarget)?.removeAttribute("open")},!1)})},set scheme(e){e=="auto"?this._scheme=this.preferredColorScheme:(e=="dark"||e=="light")&&(this._scheme=e),this.applyScheme(),this.schemeToLocalStorage()},get scheme(){return this._scheme},applyScheme(){document.querySelector("html")?.setAttribute(this.rootAttribute,this.scheme),this.scheme==="dark"?document.documentElement.classList.add("dark"):document.documentElement.classList.remove("dark")},schemeToLocalStorage(){window.localStorage?.setItem(this.localStorageKey,this.scheme)}}).init()});
